@@ -24,7 +24,7 @@ provider "kubernetes-alpha" {
 }
 
 module "flux_install" {
-  source = "./tf"
+  source = "github.com/redeux/terraform-kubernetes-flux-install"
 }
 ```
 
