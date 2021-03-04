@@ -1,10 +1,8 @@
-# Flux v2 Install with Terraform
+# Install Flux v2 with Terraform
 
 This Terraform module is (almost) the equivalent of using the Flux CLI to install Flux v2 in to your Kubernetes cluster.
 
-This module was mostly generated from the output of Flux CLI, using the command `flux install --export > flux-system.yaml`.  From there, the multi-doc yaml file that the Flux CLI produces was converted into individual yaml files using [mogensen/kubernetes-split-yaml](https://github.com/mogensen/kubernetes-split-yaml). Finally the yaml files were converted to HCL using [jrhouston/tfk8s](https://github.com/jrhouston/tfk8s). 
-
-Variables were still done by hand, unfortunately.
+This module was mostly generated from the output of Flux CLI, using the command `flux install --export > flux-system.yaml`.  From there, the multi-doc yaml file that the Flux CLI produces was converted into individual yaml files using [mogensen/kubernetes-split-yaml](https://github.com/mogensen/kubernetes-split-yaml). Finally the yaml files were converted to HCL using [jrhouston/tfk8s](https://github.com/jrhouston/tfk8s). Variables were still done by hand.
 
 ## Usage
 
