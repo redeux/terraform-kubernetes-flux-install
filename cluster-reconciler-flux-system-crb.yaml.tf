@@ -6,7 +6,7 @@ resource "kubernetes_manifest" "clusterrolebinding_cluster_reconciler_flux_syste
     "kind"       = "ClusterRoleBinding"
     "metadata" = {
       "labels" = {
-        "app.kubernetes.io/instance" = kubernetes_manifest.namespace_flux_system.object.manifest.name
+        "app.kubernetes.io/instance" = kubernetes_manifest.namespace_flux_system.object.metadata.name
         "app.kubernetes.io/version"  = var.flux_version
       }
       "name" = "cluster-reconciler-flux-system"
@@ -20,12 +20,12 @@ resource "kubernetes_manifest" "clusterrolebinding_cluster_reconciler_flux_syste
       {
         "kind"      = "ServiceAccount"
         "name"      = "kustomize-controller"
-        "namespace" = kubernetes_manifest.namespace_flux_system.object.manifest.name
+        "namespace" = kubernetes_manifest.namespace_flux_system.object.metadata.name
       },
       {
         "kind"      = "ServiceAccount"
         "name"      = "helm-controller"
-        "namespace" = kubernetes_manifest.namespace_flux_system.object.manifest.name
+        "namespace" = kubernetes_manifest.namespace_flux_system.object.metadata.name
       },
     ]
   }
