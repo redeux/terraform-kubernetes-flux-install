@@ -6,11 +6,11 @@ resource "kubernetes_manifest" "networkpolicy_deny_ingress" {
     "kind"       = "NetworkPolicy"
     "metadata" = {
       "labels" = {
-        "app.kubernetes.io/instance" = var.namespace
+        "app.kubernetes.io/instance" = kubernetes_manifest.namespace_flux_system.object.manifest.name
         "app.kubernetes.io/version"  = var.flux_version
       }
       "name"      = "deny-ingress"
-      "namespace" = var.namespace
+      "namespace" = kubernetes_manifest.namespace_flux_system.object.manifest.name
     }
     "spec" = {
       # kubectl strips this out to prevent API erros but Terraform does not

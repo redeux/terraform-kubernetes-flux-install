@@ -6,12 +6,12 @@ resource "kubernetes_manifest" "service_source_controller" {
     "kind"       = "Service"
     "metadata" = {
       "labels" = {
-        "app.kubernetes.io/instance" = var.namespace
+        "app.kubernetes.io/instance" = kubernetes_manifest.namespace_flux_system.object.manifest.name
         "app.kubernetes.io/version"  = var.flux_version
         "control-plane"              = "controller"
       }
       "name"      = "source-controller"
-      "namespace" = var.namespace
+      "namespace" = kubernetes_manifest.namespace_flux_system.object.manifest.name
     }
     "spec" = {
       "ports" = [

@@ -9,7 +9,7 @@ resource "kubernetes_manifest" "customresourcedefinition_buckets_source_toolkit_
         "controller-gen.kubebuilder.io/version" = "v0.4.1"
       }
       "labels" = {
-        "app.kubernetes.io/instance" = var.namespace
+        "app.kubernetes.io/instance" = kubernetes_manifest.namespace_flux_system.object.manifest.name
         "app.kubernetes.io/version"  = var.flux_version
       }
       "name" = "buckets.source.toolkit.fluxcd.io"

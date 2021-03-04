@@ -6,12 +6,12 @@ resource "kubernetes_manifest" "deployment_source_controller" {
     "kind"       = "Deployment"
     "metadata" = {
       "labels" = {
-        "app.kubernetes.io/instance" = var.namespace
+        "app.kubernetes.io/instance" = kubernetes_manifest.namespace_flux_system.object.manifest.name
         "app.kubernetes.io/version"  = var.flux_version
         "control-plane"              = "controller"
       }
       "name"      = "source-controller"
-      "namespace" = var.namespace
+      "namespace" = kubernetes_manifest.namespace_flux_system.object.manifest.name
     }
     "spec" = {
       "replicas" = 1

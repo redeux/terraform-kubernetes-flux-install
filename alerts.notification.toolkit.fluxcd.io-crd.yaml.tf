@@ -9,7 +9,7 @@ resource "kubernetes_manifest" "customresourcedefinition_alerts_notification_too
         "controller-gen.kubebuilder.io/version" = "v0.4.1"
       }
       "labels" = {
-        "app.kubernetes.io/instance" = var.namespace
+        "app.kubernetes.io/instance" = kubernetes_manifest.namespace_flux_system.object.manifest.name
         "app.kubernetes.io/version"  = var.flux_version
       }
       "name" = "alerts.notification.toolkit.fluxcd.io"

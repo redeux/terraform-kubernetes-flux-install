@@ -6,7 +6,7 @@ resource "kubernetes_manifest" "clusterrolebinding_crd_controller_flux_system" {
     "kind"       = "ClusterRoleBinding"
     "metadata" = {
       "labels" = {
-        "app.kubernetes.io/instance" = var.namespace
+        "app.kubernetes.io/instance" = kubernetes_manifest.namespace_flux_system.object.manifest.name
         "app.kubernetes.io/version"  = var.flux_version
       }
       "name" = "crd-controller-flux-system"
@@ -20,32 +20,32 @@ resource "kubernetes_manifest" "clusterrolebinding_crd_controller_flux_system" {
       {
         "kind"      = "ServiceAccount"
         "name"      = "kustomize-controller"
-        "namespace" = var.namespace
+        "namespace" = kubernetes_manifest.namespace_flux_system.object.manifest.name
       },
       {
         "kind"      = "ServiceAccount"
         "name"      = "helm-controller"
-        "namespace" = var.namespace
+        "namespace" = kubernetes_manifest.namespace_flux_system.object.manifest.name
       },
       {
         "kind"      = "ServiceAccount"
         "name"      = "source-controller"
-        "namespace" = var.namespace
+        "namespace" = kubernetes_manifest.namespace_flux_system.object.manifest.name
       },
       {
         "kind"      = "ServiceAccount"
         "name"      = "notification-controller"
-        "namespace" = var.namespace
+        "namespace" = kubernetes_manifest.namespace_flux_system.object.manifest.name
       },
       {
         "kind"      = "ServiceAccount"
         "name"      = "image-reflector-controller"
-        "namespace" = var.namespace
+        "namespace" = kubernetes_manifest.namespace_flux_system.object.manifest.name
       },
       {
         "kind"      = "ServiceAccount"
         "name"      = "image-automation-controller"
-        "namespace" = var.namespace
+        "namespace" = kubernetes_manifest.namespace_flux_system.object.manifest.name
       },
     ]
   }

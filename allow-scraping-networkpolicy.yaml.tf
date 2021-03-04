@@ -6,11 +6,11 @@ resource "kubernetes_manifest" "networkpolicy_allow_scraping" {
     "kind"       = "NetworkPolicy"
     "metadata" = {
       "labels" = {
-        "app.kubernetes.io/instance" = var.namespace
+        "app.kubernetes.io/instance" = kubernetes_manifest.namespace_flux_system.object.manifest.name
         "app.kubernetes.io/version"  = var.flux_version
       }
       "name"      = "allow-scraping"
-      "namespace" = var.namespace
+      "namespace" = kubernetes_manifest.namespace_flux_system.object.manifest.name
     }
     "spec" = {
       "ingress" = [
